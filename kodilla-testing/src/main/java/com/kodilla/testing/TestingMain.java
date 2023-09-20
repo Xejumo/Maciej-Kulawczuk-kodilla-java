@@ -9,13 +9,6 @@ public class TestingMain {
 
         String result = simpleUser.getUsername();
 
-        if (result.equals("theForumUser")) {
-            System.out.println("OK");
-        }else{
-            System.out.println("Error!");
-        }
-
-        System.out.println("Test - pierwszy test jednostkowy:");
 
         Caalculator calculator = new Caalculator();
 
