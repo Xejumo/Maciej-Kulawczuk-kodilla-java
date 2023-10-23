@@ -3,6 +3,8 @@ import com.kodilla.testing.user.SimpleUser;
 
 import org.junit.jupiter.api.*;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @DisplayName("Forum Test Suite")
 public class ForumTestSuite {
     public void before() {
@@ -34,7 +36,7 @@ public class ForumTestSuite {
         String result = simpleUser.getRealName();
         System.out.println("Testing " + result);
         //Then
-        Assertions.assertEquals("John Smith", result);
+        assertEquals("John Smith", result);
     }
     @DisplayName(
                 "When created SimpleUser with name, " +
@@ -51,6 +53,6 @@ public class ForumTestSuite {
         String expectedResult = "theForumUser";
 
         //Then
-        Assertions.assertEquals(expectedResult, result);
+        assertEquals(expectedResult, result);
     }
 }

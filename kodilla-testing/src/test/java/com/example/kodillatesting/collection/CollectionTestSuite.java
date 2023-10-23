@@ -4,8 +4,8 @@ import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.jupiter.api.*;
 
 
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CollectionTestSuite {
@@ -55,6 +55,17 @@ public class CollectionTestSuite {
         Assertions.assertEquals(expectResultList,resultList);
 
 
+    }
+
+    @Test
+    public void testExterminateRemovesOddNumbers(){
+        //Given
+        List<Integer> inputList = Arrays.asList(1, 2, 3, 4, 5, 6);
+        List<Integer> expectedList = Arrays.asList(2, 4, 6);
+        //When
+        List<Integer> resultList = myList.exterminate(inputList);
+        //Then
+        Assertions.assertEquals(expectedList, resultList);
 
     }
 }
