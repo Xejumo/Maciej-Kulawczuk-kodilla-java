@@ -20,6 +20,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.3'
 	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.3'
+	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '5.6.0'
 
 }
 tasks.named('test') {
