@@ -1,8 +1,7 @@
 package com.example.kodillatesting.forum;
+
 import com.kodilla.testing.user.SimpleUser;
-
 import org.junit.jupiter.api.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Forum Test Suite")
