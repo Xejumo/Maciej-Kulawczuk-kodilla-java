@@ -9,7 +9,6 @@ public class Task {
     private final User creator;
     private final LocalDate created;
     private final LocalDate deadline;
-    private long duration;
 
     public Task(String title, String description, User assignedUser, User creator, LocalDate created, LocalDate deadline) {
         this.title = title;
@@ -18,7 +17,6 @@ public class Task {
         this.creator = creator;
         this.created = created;
         this.deadline = deadline;
-        this.duration = 0;
     }
 
     public String getTitle() {
@@ -43,10 +41,6 @@ public class Task {
 
     public LocalDate getDeadline() {
         return deadline;
-    }
-
-    public int getDuration() {
-        return (int) duration;
     }
 
     @Override
