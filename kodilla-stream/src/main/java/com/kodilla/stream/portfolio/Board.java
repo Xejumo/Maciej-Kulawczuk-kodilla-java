@@ -38,21 +38,4 @@ public final class Board {
                 "taskLists=" + taskLists + "\n" +
                 '}';
     }
-    public double calculateAverageWorkingOnTask() {
-        List<TaskList> inProgressTasks = taskLists.stream()
-                .filter(taskList -> taskList.getName().equals("In progress"))
-                .collect(Collectors.toList());
-
-        return inProgressTasks.stream()
-                .flatMap(taskList -> taskList.getTasks().stream())
-                .mapToDouble(task -> {
-                    long duration = task.getDuration();
-                    LocalDate created = task.getCreated();
-                    LocalDate now = LocalDate.now();
-                    long daysBetween = ChronoUnit.DAYS.between(created, now);
-                    return daysBetween - duration;
-                })
-                .average()
-                .orElse(0);
-    }
 }
