@@ -1,21 +1,25 @@
 package com.example.kodilla.good.patterns;
 
-import com.example.kodilla.good.patterns.challenges.MovieStore;
-
-import java.util.List;
-import java.util.Map;
+import com.example.kodilla.good.patterns.challenges.*;
 
 public class KodillaGoodPatternsApplication {
 
     public static void main(String[] args) {
-        MovieStore movieStore = new MovieStore();
-        Map<String, List<String>> movies = movieStore.getMovies();
+        InformationService informationService = new ConsoleInformationService();
+        OrderRepository orderRepository = new InMemoryOrderRepository();
 
-        String result = movies.values().stream()
-                .flatMap(List::stream)
-                .reduce((s1, s2) -> s1 + "!" + s2)
-                .orElse("");
+        ProductOrderService productOrderService = new ProductOrderService(informationService, orderRepository);
 
-        System.out.println(result);
+        User user = new User("john_doe");
+        Product product = new Product("Laptop");
+        int quantity = 1;
+
+        boolean isOrdered = productOrderService.order(user, product, quantity);
+
+        if (isOrdered) {
+            System.out.println("Order successfully placed!");
+        } else {
+            System.out.println("Failed to place the order.");
+        }
     }
 }
