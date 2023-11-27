@@ -1,25 +1,19 @@
 package com.example.kodilla.good.patterns;
 
-import com.example.kodilla.good.patterns.challenges.*;
+import com.example.kodilla.good.patterns.food.*;
 
 public class KodillaGoodPatternsApplication {
 
     public static void main(String[] args) {
-        InformationService informationService = new ConsoleInformationService();
-        OrderRepository orderRepository = new InMemoryOrderRepository();
+        OrderHandler orderHandler = new OrderHandler();
 
-        ProductOrderService productOrderService = new ProductOrderService(informationService, orderRepository);
+        orderHandler.addProducer("ExtraFoodShop", new ExtraFoodShop());
+        orderHandler.addProducer("HealthyShop", new HealthyShop());
+        orderHandler.addProducer("GlutenFreeShop", new GlutenFreeShop());
 
-        User user = new User("john_doe");
-        Product product = new Product("Laptop");
-        int quantity = 1;
-
-        boolean isOrdered = productOrderService.order(user, product, quantity);
-
-        if (isOrdered) {
-            System.out.println("Order successfully placed!");
-        } else {
-            System.out.println("Failed to place the order.");
-        }
+        orderHandler.placeOrder("LocalFarm", 10, "Apples", "ExtraFoodShop");
+        orderHandler.placeOrder("OrganicFarm", 5, "Quinoa", "HealthyShop");
+        orderHandler.placeOrder("BioFarm", 8, "Gluten-Free Bread", "GlutenFreeShop");
     }
 }
+
