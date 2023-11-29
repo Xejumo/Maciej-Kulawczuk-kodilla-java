@@ -1,19 +1,20 @@
 package com.example.kodilla.good.patterns;
 
-import com.example.kodilla.good.patterns.food.*;
+import com.example.kodilla.good.patterns.flight.Airport;
+import com.example.kodilla.good.patterns.flight.Fly;
 
 public class KodillaGoodPatternsApplication {
 
     public static void main(String[] args) {
-        OrderHandler orderHandler = new OrderHandler();
+        Airport airport = new Airport();
 
-        orderHandler.addProducer("ExtraFoodShop", new ExtraFoodShop());
-        orderHandler.addProducer("HealthyShop", new HealthyShop());
-        orderHandler.addProducer("GlutenFreeShop", new GlutenFreeShop());
+        airport.addFlight(new Fly("GDAŃSK", "WROCŁAW"));
+        airport.addFlight(new Fly("GDAŃSK", "KRAKÓW", "WROCŁAW"));
+        airport.addFlight(new Fly("WARSZAWA", "KRAKÓW", "POZNAŃ"));
 
-        orderHandler.placeOrder("LocalFarm", 10, "Apples", "ExtraFoodShop");
-        orderHandler.placeOrder("OrganicFarm", 5, "Quinoa", "HealthyShop");
-        orderHandler.placeOrder("BioFarm", 8, "Gluten-Free Bread", "GlutenFreeShop");
+        System.out.println("Flights from GDAŃSK: " + airport.findFlightsFromCity("GDAŃSK"));
+        System.out.println("Flights to WROCŁAW: " + airport.findFlightsToCity("WROCŁAW"));
+        System.out.println("Flights via KRAKÓW: " + airport.findFlightsViaCity("KRAKÓW"));
     }
 }
 
