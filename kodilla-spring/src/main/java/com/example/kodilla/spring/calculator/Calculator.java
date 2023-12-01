@@ -3,6 +3,8 @@ package com.example.kodilla.spring.calculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 public class Calculator {
 
@@ -10,6 +12,7 @@ public class Calculator {
 
     @Autowired
     public Calculator(Display display) {
+        Objects.requireNonNull(display, "Display cannot be null");
         this.display = display;
     }
 
@@ -37,8 +40,7 @@ public class Calculator {
             display.displayValue(result);
             return result;
         } else {
-            System.out.println("Cannot divide by zero.");
-            return Double.NaN;
+            throw new IllegalArgumentException("Cannot divide by zero.");
         }
     }
 }
